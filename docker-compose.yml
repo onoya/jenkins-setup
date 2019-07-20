@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  jenkins:
+    image: jenkinsci/blueocean
+    container_name: 'jenkins-master'
+    user: root
+    restart: always
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8080:8080
+
+volumes:
+  jenkins-data:
+    external:
+      name: jenkins-data
